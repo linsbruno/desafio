@@ -31,3 +31,34 @@ function removerCaracteresDuplicados(formulario2) {
 
 // Adiciona o evento de clique ao botão
 document.getElementById("btn2").addEventListener("click", removerCaracteresDuplicados);
+
+// Função para verificar se uma string é palindrômica
+function ehPalindromo(str) {
+    var reversedStr = str.split("").reverse().join(""); // Inverte a string
+    return str === reversedStr; // Verifica se a string original é igual à string invertida
+}
+
+// Função para encontrar a maior substring palindrômica
+function encontrarSubstringPalindromo(formulario3) {
+    formulario3.preventDefault(); // Evita que a página seja atualizada
+
+    var text3 = document.getElementById("text3").value; // recebe valor do input
+    var tamMax = 0; // armazena tamanho maximo do palindromo
+    var palindromo = ""; // armazena substring encontrada
+    // Percorre todas as substrings possíveis
+    for (var i = 0; i < text3.length; i++) {
+        for (var j = i + 1; j <= text3.length; j++) {
+            var substring = text3.substring(i, j); // Obtém a substring atual
+
+            if (ehPalindromo(substring) && substring.length > tamMax) {
+                tamMax = substring.length; // Atualiza o comprimento máximo
+                palindromo = substring; // Atualiza a substring palindrômica encontrada
+            }
+        }
+    }
+
+    document.getElementById("result3").textContent = palindromo; // Insere o resultado no span
+}
+
+// Adiciona o evento de clique ao botão
+document.getElementById("btn3").addEventListener("click", encontrarSubstringPalindromo);
