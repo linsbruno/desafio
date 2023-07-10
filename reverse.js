@@ -62,3 +62,47 @@ function encontrarSubstringPalindromo(formulario3) {
 
 // Adiciona o evento de clique ao botão
 document.getElementById("btn3").addEventListener("click", encontrarSubstringPalindromo);
+
+
+// Função para converter a primeira letra de cada sentença para maiúscula
+    function converterPrimeirasLetrasMaiusculas(pm) {
+      pm.preventDefault(); // Evita que a página seja atualizada
+
+      var inputtexto = document.getElementById("text4").value; // Obtém o valor digitado no input
+      var sentences = inputtexto.split(/[.?!]/); // Divide a string em sentenças usando os delimitadores . ? e !
+      var result = ""; // Variável para armazenar o resultado final
+
+      for (var i = 0; i < sentences.length; i++) {
+        var sentence = sentences[i].trim(); // Remove espaços em branco no início e no final da sentença
+
+        if (sentence !== "") {
+          var firstChar = sentence.charAt(0).toUpperCase(); // Obtém a primeira letra da sentença e a converte para maiúscula
+          var restOfSentence = sentence.slice(1); // Obtém o restante da sentença (a partir do segundo caractere)
+          var formattedSentence = firstChar + restOfSentence; // Combina a primeira letra maiúscula com o restante da sentença
+
+          result += formattedSentence + ". "; // Adiciona a sentença formatada ao resultado final
+        }
+      }
+
+      document.getElementById("result4").textContent = result; // Insere o resultado no span
+    }
+
+    // Adiciona o evento de clique ao botão
+    document.getElementById("btn4").addEventListener("click", converterPrimeirasLetrasMaiusculas);
+
+
+    // Função para verificar se uma palavra é um anagrama de um palíndromo
+    // Função para verificar se uma palavra é um palíndromo
+    function verificarPalindromo(lk) {
+      lk.preventDefault(); // Evita que a página seja atualizada
+
+      var inputWord = document.getElementById("text5").value; // Obtém o valor digitado no input
+      var reversedWord = inputWord.split("").reverse().join(""); // Inverte a palavra
+
+      var isPalindrome = inputWord.toLowerCase() === reversedWord.toLowerCase(); // Verifica se a palavra original é igual à palavra invertida
+
+      document.getElementById("result5").textContent = isPalindrome; // Insere o resultado no span
+    }
+
+    // Adiciona o evento de clique ao botão
+    document.getElementById("btn5").addEventListener("click", verificarPalindromo);
